@@ -1,8 +1,15 @@
 import { PokemonService } from './../pokemon.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, from, merge, mergeMap, pipe, switchMap } from 'rxjs';
+import { BehaviorSubject, bufferCount, from, merge, mergeMap, Observable, pipe, switchMap } from 'rxjs';
+import { AllPokemons, NamedAPIResource, Pokemon } from '../interface';
 
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
+}
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
@@ -10,16 +17,31 @@ import { BehaviorSubject, from, merge, mergeMap, pipe, switchMap } from 'rxjs';
 })
 export class CardListComponent implements OnInit{
 
-  elements = new BehaviorSubject<any>([])
+  pokemons$ : Observable<Pokemon[]> | undefined
+  offset$ = new BehaviorSubject(0)
+
+
+
+  onPageChange(event: any) {
+    this.offset$.next(event.page * 20)
+    }
+
+
 
   constructor(private http: HttpClient, private pokemonService: PokemonService) {}
 
   ngOnInit() {
-    this.pokemonService.getPokemons().pipe(
-      switchMap((element: any) => from(element.results)),
-      mergeMap((el: any) => this.pokemonService.getSinglePokemon(el.url))
-    ).subscribe(res => {
-      this.elements.next([...this.elements.value, res.sprites.front_default])
-    })
+    this.pokemons$ = this.offset$.pipe(
+      switchMap((offset) => {
+        return this.pokemonService.getPokemons(offset).pipe(
+          switchMap((element: AllPokemons) => from(element.results)),
+          mergeMap((el: NamedAPIResource) => this.pokemonService.getSinglePokemon(el.url)),
+          bufferCount(20,20)
+        )
+      })
+    )
+  
+    
   }
+
   }

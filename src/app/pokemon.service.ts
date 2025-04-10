@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap } from 'rxjs';
+import { AllPokemons, Pokemon } from './interface';
 
 
 @Injectable({
@@ -10,12 +11,12 @@ export class PokemonService {
 
   constructor(private http: HttpClient){}
 
-  getPokemons(){
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20`) // [{name, url}, ...]
+  getPokemons(offset: number): Observable<AllPokemons>{
+    return this.http.get<AllPokemons>(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`) // [{name, url}, ...]
   }
 
-  getSinglePokemon(name: string): Observable<any> {
-    return this.http.get(name)
+  getSinglePokemon(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(name)
   }
 
 }

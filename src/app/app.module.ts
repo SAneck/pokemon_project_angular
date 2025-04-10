@@ -7,6 +7,8 @@ import { SingleCardComponent } from './single-card/single-card.component';
 import { FinderComponent } from './finder/finder.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
