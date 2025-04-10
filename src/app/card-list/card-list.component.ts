@@ -32,16 +32,24 @@ export class CardListComponent implements OnInit{
 
   ngOnInit() {
     this.pokemons$ = this.offset$.pipe(
-      switchMap((offset) => {
+      switchMap(offset => {
         return this.pokemonService.getPokemons(offset).pipe(
           switchMap((element: AllPokemons) => from(element.results)),
           mergeMap((el: NamedAPIResource) => this.pokemonService.getSinglePokemon(el.url)),
           bufferCount(20,20)
-        )
+          )
       })
     )
   
-    
+    // switchMap((offset) => {
+    //   return this.pokemonService.getPokemons(offset).pipe(
+    //     switchMap((element: AllPokemons) => from(element.results)),
+    //     mergeMap((el: NamedAPIResource) => this.pokemonService.getSinglePokemon(el.url)),
+    //     bufferCount(20,20)
+    //   )
+    // })
+
+
   }
 
   }

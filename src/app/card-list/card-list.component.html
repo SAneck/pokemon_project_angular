@@ -1,5 +1,5 @@
 <div *ngFor="let element of pokemons$ | async">
-    <img src={{element.sprites.front_shiny}}>
+    <app-single-card [imagePokemon]="element.sprites.front_shiny" [namePokemon]="element.name" [weightPokemon]="element.weight" [heigthPokemon]="element.height"></app-single-card>
 </div>
 
 <div class="card flex justify-content-center">

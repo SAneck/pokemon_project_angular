@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-single-card',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./single-card.component.scss']
 })
 export class SingleCardComponent {
+
+  @Input() imagePokemon: string | null = '' 
+  @Input() namePokemon: string | null = ''
+  @Input() weightPokemon: number | null = null
+  @Input() heigthPokemon: number | null = null
 
 }

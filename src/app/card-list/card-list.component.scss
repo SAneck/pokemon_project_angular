@@ -1,4 +1,7 @@
-img{
-    width: 100px;
-    height: 100px;
+:host {
+    width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
