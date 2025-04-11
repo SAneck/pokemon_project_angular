@@ -20,13 +20,9 @@ export class CardListComponent implements OnInit{
   pokemons$ : Observable<Pokemon[]> | undefined
   offset$ = new BehaviorSubject(0)
 
-
-
   onPageChange(event: any) {
     this.offset$.next(event.page * 20)
     }
-
-
 
   constructor(private http: HttpClient, private pokemonService: PokemonService) {}
 

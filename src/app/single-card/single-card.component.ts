@@ -12,4 +12,5 @@ export class SingleCardComponent {
   @Input() weightPokemon: number | null = null
   @Input() heigthPokemon: number | null = null
 
+  @Input() pokemonId = -1
 }

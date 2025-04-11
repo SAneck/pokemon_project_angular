@@ -1,7 +1,16 @@
 <div *ngFor="let element of pokemons$ | async">
-    <app-single-card [imagePokemon]="element.sprites.front_shiny" [namePokemon]="element.name" [weightPokemon]="element.weight" [heigthPokemon]="element.height"></app-single-card>
+    <app-single-card 
+        [imagePokemon]="element.sprites.front_shiny" 
+        [namePokemon]="element.name" 
+        [weightPokemon]="element.weight" 
+        [heigthPokemon]="element.height"
+        [pokemonId]="element.id"    
+    >
+    </app-single-card>
 </div>
-
+<div>
+    <router-outlet></router-outlet>
+</div>
 <div class="card flex justify-content-center">
     <p-paginator 
         (onPageChange)="onPageChange($event)" 
