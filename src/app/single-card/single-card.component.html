@@ -1,19 +1,24 @@
-<p-card header={{namePokemon}} subheader="Card Subheader" [style]="{ width: '360px' }">
-    <ng-template pTemplate="header">
-        <img alt="Card" src={{imagePokemon}} />
-    </ng-template>
-    <p>
-        <span>Heigth: </span><b>{{heigthPokemon}}</b><br>
-        <span>Weigth: </span><b>{{weightPokemon}}</b>
-    </p>
-    <ng-template pTemplate="footer">
-        <div class="flex gap-3 mt-1">
-            <p-button 
-                label="More Details" 
-                class="w-full" 
-                styleClass="w-full" 
-                [routerLink]="['/pokemon', pokemonId]"
-            />
-        </div>
-    </ng-template>
+<p-card
+  header="{{ namePokemon }}"
+  subheader="Card Subheader"
+  [style]="{ width: '360px' }"
+>
+  <ng-template pTemplate="header">
+    <img alt="Card" src="{{ imagePokemon }}" />
+  </ng-template>
+  <p>
+    <span>Heigth: </span><b>{{ heigthPokemon }}</b
+    ><br />
+    <span>Weigth: </span><b>{{ weightPokemon }}</b>
+  </p>
+  <ng-template pTemplate="footer">
+    <div class="flex gap-3 mt-1">
+      <p-button
+        label="More Details"
+        class="w-full"
+        styleClass="w-full"
+        [routerLink]="['/pokemon', pokemonId]"
+      />
+    </div>
+  </ng-template>
 </p-card>
