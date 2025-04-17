@@ -1,0 +1,28 @@
+<div *ngIf="poke$ | async as pokemon">
+  <p-card class="card"
+  header="{{ pokemon.name }}"
+  subheader="Card Subheader"
+  [style]="{ width: '700px' }"
+  >
+  <ng-template pTemplate="header">
+    <img alt="Card" src="{{ pokemon.sprites.front_shiny }}" />
+  </ng-template>
+  <div class="footer">
+  <p>
+    <span>Heigth: </span><b>{{ pokemon.weight }}</b><br/>
+    <span>Weigth: </span><b>{{ pokemon.order }}</b><br/>
+    <span>Weigth: </span><b>{{ pokemon.location_area_encounters }}</b><br/>
+    <span>Weigth: </span><b>{{ pokemon.held_items }}</b><br/>
+    <span>Weigth: </span><b>{{ pokemon.base_experience }}</b><br/>
+    <span>Weigth: </span><b>{{ pokemon.past_types }}</b><br/>
+    <span>Weigth: </span><b>{{ pokemon.types }}</b><br/>
+  </p>
+  <!-- <ng-template pTemplate="footer"> -->
+    <div class="flex gap-3 mt-1">
+    </div>
+  </div>
+  <!-- </ng-template> -->
+</p-card>
+
+  </div>
+  

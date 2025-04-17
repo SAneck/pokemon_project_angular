@@ -1,17 +1,18 @@
-<p-card
+<p-card class="card"
   header="{{ namePokemon }}"
   subheader="Card Subheader"
-  [style]="{ width: '360px' }"
->
+  [style]="{ width: '450px' }"
+  >
   <ng-template pTemplate="header">
     <img alt="Card" src="{{ imagePokemon }}" />
   </ng-template>
+  <div class="footer">
   <p>
     <span>Heigth: </span><b>{{ heigthPokemon }}</b
     ><br />
     <span>Weigth: </span><b>{{ weightPokemon }}</b>
   </p>
-  <ng-template pTemplate="footer">
+  <!-- <ng-template pTemplate="footer"> -->
     <div class="flex gap-3 mt-1">
       <p-button
         label="More Details"
@@ -20,5 +21,6 @@
         [routerLink]="['/pokemon', pokemonId]"
       />
     </div>
-  </ng-template>
+  </div>
+  <!-- </ng-template> -->
 </p-card>

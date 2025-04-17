@@ -1,17 +1,21 @@
-<div *ngFor="let element of pokemons$ | async">
-    <app-single-card 
-        [imagePokemon]="element.sprites.front_shiny" 
-        [namePokemon]="element.name" 
-        [weightPokemon]="element.weight" 
-        [heigthPokemon]="element.height"
-        [pokemonId]="element.id"    
-    >
-    </app-single-card>
+<div class="grid">
+<div class="list">
+    <div *ngFor="let element of pokemons$ | async">
+        <app-single-card class="card"
+            [imagePokemon]="element.sprites.front_shiny" 
+            [namePokemon]="element.name" 
+            [weightPokemon]="element.weight" 
+            [heigthPokemon]="element.height"
+            [pokemonId]="element.id"    
+        >
+        </app-single-card>
+    </div>
 </div>
 <div>
-    <router-outlet></router-outlet>
+    <router-outlet class="details"></router-outlet>
 </div>
-<div class="card flex justify-content-center">
+</div>
+<div class="card flex justify-content-center paginator">
     <p-paginator 
         (onPageChange)="onPageChange($event)" 
         [first]="offset$.value" 

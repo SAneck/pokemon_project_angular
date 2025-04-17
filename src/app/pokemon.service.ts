@@ -3,7 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import {
   BehaviorSubject,
   bufferCount,
+  combineLatest,
+  forkJoin,
   from,
+  map,
   mergeMap,
   Observable,
   switchMap,
@@ -16,6 +19,8 @@ import { AllPokemons, NamedAPIResource, Pokemon } from './interface';
 export class PokemonService {
   pokemons$: Observable<Pokemon[]> | undefined;
   offset$ = new BehaviorSubject(0);
+  filteredPokemons$: Observable<Pokemon[]> | undefined
+  pokemonName$ = new BehaviorSubject<string>('')
 
   baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
@@ -29,6 +34,19 @@ export class PokemonService {
         );
       })
     );
+
+    this.pokemons$ = combineLatest([
+      this.pokemons$,
+      this.pokemonName$
+    ]).pipe(
+      map(([pokemon, pokemonName]) => {
+        if(!pokemonName) return pokemon
+        return pokemon.filter(value => 
+          value.name.toLowerCase()
+          .includes(pokemonName.toLowerCase())
+        )
+      })
+    )
   }
 
   getPokemons(offset: number): Observable<AllPokemons> {
@@ -37,7 +55,12 @@ export class PokemonService {
     ); // [{name, url}, ...]
   }
 
-  getSinglePokemon(id: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(id);
+  getSinglePokemon(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(name);
   }
+
+  searchPokemon(text: string){
+    this.pokemonName$.next(text)
+  }
+
 }

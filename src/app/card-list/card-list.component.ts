@@ -3,17 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   BehaviorSubject,
-  bufferCount,
-  from,
-  merge,
-  mergeMap,
   Observable,
-  pipe,
-  Subscription,
-  switchMap,
 } from 'rxjs';
-import { AllPokemons, NamedAPIResource, Pokemon } from '../interface';
-import { ActivatedRoute } from '@angular/router';
+import { Pokemon } from '../interface';
 
 interface PageEvent {
   first: number;

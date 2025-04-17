@@ -5,3 +5,18 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.grid{
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    .list{
+        display: flex;
+        flex-wrap: wrap;
+        width: 1000px;
+    }
+    .details{
+        position: absolute;
+        top: 100;
+    }
+}

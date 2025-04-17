@@ -1,0 +1,5 @@
+<p-iconField iconPosition="left">
+    <p-inputIcon styleClass="pi pi-search" />
+    <input type="text" pInputText placeholder="your pokemon..." [formControl]="pokemonName" />
+</p-iconField>
+<p-button (click)="searchPokemon()">Search</p-button>

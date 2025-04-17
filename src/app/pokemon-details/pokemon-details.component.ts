@@ -1,17 +1,17 @@
-import { Component, inject, Input } from '@angular/core';
-import { Pokemon, PokemonStat, PokemonType } from '../interface';
+import { Component } from '@angular/core';
+import { Pokemon } from '../interface';
 import { PokemonService } from '../pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-finder',
-  templateUrl: './finder.component.html',
-  styleUrls: ['./finder.component.scss'],
+  selector: 'app-pokemon-details',
+  templateUrl: './pokemon-details.component.html',
+  styleUrls: ['./pokemon-details.component.scss']
 })
-export class FinderComponent {
+export class PokemonDetailsComponent {
   poke$: Observable<Pokemon> | undefined;
-
+  
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute
