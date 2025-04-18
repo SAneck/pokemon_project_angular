@@ -1,6 +1,6 @@
 <p-card class="card"
   header="{{ namePokemon }}"
-  subheader="Card Subheader"
+  subheader="{{id}}"
   [style]="{ width: '450px' }"
   >
   <ng-template pTemplate="header">
@@ -8,9 +8,9 @@
   </ng-template>
   <div class="footer">
   <p>
-    <span>Heigth: </span><b>{{ heigthPokemon }}</b
+    <span>Height: </span><b>{{ heigthPokemon }}</b
     ><br />
-    <span>Weigth: </span><b>{{ weightPokemon }}</b>
+    <span>Weight: </span><b>{{ weightPokemon }}</b>
   </p>
   <!-- <ng-template pTemplate="footer"> -->
     <div class="flex gap-3 mt-1">

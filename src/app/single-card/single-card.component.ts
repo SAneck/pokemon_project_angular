@@ -10,6 +10,7 @@ export class SingleCardComponent {
   @Input() namePokemon: string | null = '';
   @Input() weightPokemon: number | null = null;
   @Input() heigthPokemon: number | null = null;
+  @Input() id: number | null = null
 
   @Input() pokemonId = -1;
 }
